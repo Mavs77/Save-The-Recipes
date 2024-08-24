@@ -46,6 +46,25 @@ nav ul li a:hover {
 }
 
 /* Main content styling */
+#main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10rem;
+    gap: 5rem;
+}
+
+#img-container img {
+    height: 50vh;
+    border: 5px solid transparent; 
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+#mission-statement h1 {
+    font-size: 3rem;
+}
+
 main {
     padding: 2rem;
 }
