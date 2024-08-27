@@ -3,7 +3,7 @@ const router = express.Router();
 const authController = require('../controllers/auth');  
 const homeController = require('../controllers/home'); 
 const recipesController = require('../controllers/recipes'); 
-const { ensureAuth, ensureGuest } = require('../middleware/auth'); 
+const { ensureAuth, ensureGuest } = require('../middleware/auth'); //object destructuring. The require method imports the authentication objection we wrote in the middleware folder. Within the authentication objects rests two methods, ensureAuth & ensureGuest. 
 
 
 //Main Routes 
