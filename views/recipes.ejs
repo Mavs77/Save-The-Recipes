@@ -4,6 +4,9 @@
     <div class="col-6">
       <h2><%= recipes.name %></h2>
       <img class="img-fluid" src="<%= recipes.image %>" alt="<%= recipes.name %>"/>
+      <div class="recipe-url">
+        <iframe width="300" height="200" src="<%= recipes.video %>" title="Recipe-Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
       <div class="row justify-content-between">
         <!-- Like Button -->
         <!-- need to update the associated routes and controllers -->

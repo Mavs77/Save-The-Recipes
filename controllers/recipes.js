@@ -6,6 +6,14 @@ const Favorite = require("../models/Favorite");
 //ignore
 const Comment = require("../models/Comments");
 
+function getEmbedUrl(url) {
+  const videoIdMatch = url.match(/(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([^&]+)/);
+  if (videoIdMatch && videoIdMatch[1]) {
+    return `https://www.youtube.com/embed/${videoIdMatch[1]}`;
+  }
+  return url; // Return the original URL if it's already in embed format or not a YouTube link
+}
+
 module.exports = {
   getProfile: async (req, res) => {
     try {
@@ -66,6 +74,8 @@ module.exports = {
       // Upload image to Cloudinary
       const result = await cloudinary.uploader.upload(req.file.path);
 
+      const videoUrl = getEmbedUrl(req.body.video)
+
       // we are consolidating data from many different sources (cloudinary, mongo, form, passport) and uploading it tour database. 
       await Recipe.create({
         name: req.body.name,
@@ -75,6 +85,7 @@ module.exports = {
         directions: req.body.directions,
         likes: 0,
         user: req.user.id,
+        video: videoUrl,
       });
       console.log("Recipe has been added!");
       res.redirect("/profile");
@@ -117,7 +128,7 @@ module.exports = {
       const recipe = await Recipe.findById(req.params.id);
 
       // Delete image from Cloudinary
-      await cloudinary.uploader.destroy(Recipe.cloudinaryId);
+      await cloudinary.uploader.destroy(recipe.cloudinaryId);
 
       // Delete post from db
       await Recipe.deleteOne({ _id: req.params.id });

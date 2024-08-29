@@ -35,6 +35,10 @@
                 <!-- This creates an input field of type 'file', allowing the user to upload a file. The destination wher the upload is sent is determined by the 'action' attribute of the '<form>' tag that contains the '<input>' element. In this instance, the acton attribute points to the '/recipe/creatPost' route. Follow the server entry point. -->
                 <input type="file" class="form-control" id="imageUpload" name="file">
               </div>
+              <div class="mb-3">
+                <label for="urlUpload" class="form-label">URL</label>
+                <input type="url" placeholder="Paste in URL if available" id="urlUpload" name="video" class="form-control">
+              </div>
               <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
             </form>
             <!-- Form End -->
