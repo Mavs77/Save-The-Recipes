@@ -34,7 +34,7 @@ app.use(express.static('public'))
 
 //body parsing 
 app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
+app.use(express.json()) 
 
 //logging 
 app.use(logger('dev'))
